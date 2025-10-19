@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Social Media Scheduler</title>
-  <!-- ===== CSS Styling ===== -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,11 +12,20 @@
     <h1>📅 Social Media Scheduler</h1>
   </header>
 
-  <!-- ===== Post Form Section ===== -->
-  <section id="form-section">
+  <!-- ===== User Email / Signup Section ===== -->
+  <section id="signup-section">
+    <h2>🔑 Enter Your Email to Use Scheduler</h2>
+    <form id="signupForm">
+      <input type="email" id="userEmail" placeholder="Enter your Gmail" required>
+      <button type="submit">Submit</button>
+    </form>
+    <p id="signup-status"></p>
+  </section>
+
+  <!-- ===== Post Form Section (Hidden Until Email is Entered) ===== -->
+  <section id="form-section" style="display:none;">
     <h2>📝 Create & Schedule a Post</h2>
     <form id="postForm" enctype="multipart/form-data">
-      
       <!-- Post Text -->
       <label for="text">Post Text:</label>
       <textarea placeholder="Write your post..." id="text"></textarea>
@@ -135,5 +143,4 @@
 
   <!-- ===== Scripts ===== -->
   <script src="app.js"></script>
-</body>
-</html>
+  <script>
