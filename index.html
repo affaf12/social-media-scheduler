@@ -19,7 +19,7 @@
 <section id="form-section">
   <h2>📝 Create & Schedule a Post</h2>
   <form id="postForm">
-    
+
     <!-- Post Text -->
     <label for="text">Post Text:</label>
     <textarea placeholder="Write your post..." id="text" required></textarea>
@@ -27,25 +27,20 @@
     <!-- Platforms -->
     <label>Select Platforms:</label>
     <div class="platform-icons">
-      <i class="fab fa-facebook" data-platform="facebook" title="Facebook"></i>
-      <i class="fab fa-linkedin" data-platform="linkedin" title="LinkedIn"></i>
-      <i class="fab fa-instagram" data-platform="instagram" title="Instagram"></i>
-      <i class="fab fa-youtube" data-platform="youtube" title="YouTube"></i>
-      <i class="fab fa-tiktok" data-platform="tikTok" title="TikTok"></i>
+      <button type="button" class="platform-btn" data-platform="facebook"><i class="fab fa-facebook"></i> Facebook</button>
+      <button type="button" class="platform-btn" data-platform="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</button>
+      <button type="button" class="platform-btn" data-platform="instagram"><i class="fab fa-instagram"></i> Instagram</button>
+      <button type="button" class="platform-btn" data-platform="youtube"><i class="fab fa-youtube"></i> YouTube</button>
+      <button type="button" class="platform-btn" data-platform="tikTok"><i class="fab fa-tiktok"></i> TikTok</button>
     </div>
 
-    <!-- Facebook Groups -->
-    <label>Facebook Groups:</label>
+    <!-- Groups -->
+    <label>Select Groups:</label>
     <div class="group-icons">
-      <i class="fab fa-facebook" data-group="group1_id" title="Group 1"></i>
-      <i class="fab fa-facebook" data-group="group2_id" title="Group 2"></i>
-    </div>
-
-    <!-- LinkedIn Groups -->
-    <label>LinkedIn Groups:</label>
-    <div class="group-icons">
-      <i class="fab fa-linkedin" data-group="group1_id" title="Group 1"></i>
-      <i class="fab fa-linkedin" data-group="group2_id" title="Group 2"></i>
+      <button type="button" class="group-btn" data-group="fb_group1"><i class="fab fa-facebook"></i> FB Group 1</button>
+      <button type="button" class="group-btn" data-group="fb_group2"><i class="fab fa-facebook"></i> FB Group 2</button>
+      <button type="button" class="group-btn" data-group="ln_group1"><i class="fab fa-linkedin"></i> LN Group 1</button>
+      <button type="button" class="group-btn" data-group="ln_group2"><i class="fab fa-linkedin"></i> LN Group 2</button>
     </div>
 
     <!-- Category -->
@@ -65,22 +60,32 @@
       <option value="high">High</option>
     </select>
 
+    <!-- Tags / Hashtags -->
+    <label for="tags">Tags / Hashtags:</label>
+    <input type="text" id="tags" placeholder="#marketing #launch">
+
+    <!-- Media Upload -->
+    <label>Upload Media:</label>
+    <input type="file" id="image" accept="image/*">
+    <input type="file" id="video" accept="video/*">
+
     <!-- Schedule Time -->
     <label for="time">Schedule Time:</label>
     <input type="datetime-local" id="time" required>
 
     <!-- Submit Button -->
-    <button type="submit">Schedule Post</button>
+    <button type="submit" class="submit-btn">Schedule Post</button>
   </form>
   <p id="status"></p>
 </section>
 
-<!-- ===== PREVIEW SECTION ===== -->
+<!-- ===== LIVE PREVIEW ===== -->
 <section id="preview-section">
   <h2>👁️ Live Post Preview</h2>
   <div id="preview">
     <p id="preview-text"></p>
     <span class="tags" id="preview-tags"></span>
+    <span class="priority-badge" id="preview-priority"></span>
     <img id="preview-image" src="" style="display:none;">
     <video id="preview-video" controls style="display:none;"></video>
   </div>
