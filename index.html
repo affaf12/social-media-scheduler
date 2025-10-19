@@ -141,6 +141,30 @@
     </div>
   </section>
 
+
+  <!-- ===== Login & Signup Section ===== -->
+<section id="auth-section">
+  <!-- Signup Form -->
+  <div id="signup-container">
+    <h2>🔑 Signup</h2>
+    <input type="email" id="signupEmail" placeholder="Enter your Gmail" required>
+    <input type="password" id="signupPassword" placeholder="Enter password" required>
+    <button id="signupBtn">Signup</button>
+    <p id="signup-status"></p>
+    <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+  </div>
+
+  <!-- Login Form -->
+  <div id="login-container" style="display:none;">
+    <h2>🔐 Login</h2>
+    <input type="email" id="loginEmail" placeholder="Enter your Gmail" required>
+    <input type="password" id="loginPassword" placeholder="Enter password" required>
+    <button id="loginBtn">Login</button>
+    <p id="login-status"></p>
+    <p>New user? <a href="#" id="showSignup">Signup here</a></p>
+  </div>
+</section>
+
   <!-- ===== Scripts ===== -->
   <script src="app.js"></script>
   <script>
