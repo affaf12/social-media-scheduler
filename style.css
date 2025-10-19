@@ -1,4 +1,4 @@
-/* ===== Global Styles ===== */
+/* ================= GENERAL STYLES ================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,173 +13,244 @@ body {
   padding: 20px;
 }
 
-/* ===== Header Section ===== */
+/* ================= HEADER ================= */
 header {
   text-align: center;
   margin-bottom: 30px;
 }
 
 header h1 {
-  font-size: 2.5rem;
-  color: #2c3e50;
+  font-size: 2.8rem;
+  color: #4CAF50;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-/* ===== Form Section ===== */
-#form-section {
+/* ================= SECTIONS ================= */
+section {
   background-color: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
-  margin-bottom: 30px;
+  padding: 25px 30px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
 }
 
-#form-section h2 {
+section h2 {
+  margin-bottom: 20px;
+  font-size: 1.9rem;
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* ================= FORMS ================= */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="datetime-local"],
+select,
+textarea,
+button {
+  padding: 12px 15px;
   margin-bottom: 15px;
-  color: #34495e;
-}
-
-#form-section label {
-  display: block;
-  margin: 15px 0 5px;
-  font-weight: bold;
-}
-
-#form-section textarea {
-  width: 100%;
-  min-height: 150px; /* Big text area */
-  padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="datetime-local"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 6px rgba(76,175,80,0.3);
+}
+
+textarea {
   resize: vertical;
-  font-size: 1rem;
+  min-height: 100px;
 }
 
-#form-section select,
-#form-section input[type="datetime-local"],
-#form-section input[type="text"],
-#form-section input[type="file"] {
-  width: 100%;
-  padding: 8px 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  font-size: 1rem;
+input[type="file"] {
+  padding: 6px;
 }
 
-#form-section button {
-  background-color: #3498db;
-  color: white;
+/* ================= BUTTON ================= */
+button {
+  background-color: #4CAF50;
+  color: #fff;
   border: none;
-  padding: 12px 20px;
-  border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+/* ================= STATUS MESSAGES ================= */
+#status {
+  font-weight: bold;
   font-size: 1rem;
-  transition: background 0.3s ease;
+  color: #333;
+  margin-top: 10px;
 }
 
-#form-section button:hover {
-  background-color: #2980b9;
-}
-
-/* ===== Post Preview Section ===== */
-#preview-section {
-  background-color: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
-  margin-bottom: 30px;
-}
-
-#preview-section h2 {
-  margin-bottom: 15px;
-  color: #34495e;
-}
-
+/* ================= PREVIEW ================= */
 #preview {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
+  align-items: flex-start;
 }
 
 #preview p {
   font-size: 1rem;
+  word-wrap: break-word;
 }
 
 #preview img,
 #preview video {
-  max-width: 100%;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* ===== Filter Section ===== */
-#filter-section {
-  background-color: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
-  margin-bottom: 30px;
-}
-
-#filter-section h2 {
-  margin-bottom: 15px;
-  color: #34495e;
-}
-
+/* ================= FILTERS ================= */
 #filter-section select {
-  width: 30%;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 12px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.3s;
 }
 
-/* ===== Dashboard Section ===== */
-#dashboard-section {
-  background-color: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+#filter-section select:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 6px rgba(76,175,80,0.3);
 }
 
-#dashboard-section h2 {
-  margin-bottom: 15px;
-  color: #34495e;
-}
-
+/* ================= DASHBOARD ================= */
 #dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 10px;
+  background: #f4f6f8;
+}
+
+/* ================= MODERN CARD-STYLE DASHBOARD ================= */
+.post-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-#dashboard .post-item {
-  background-color: #ecf0f1;
-  padding: 15px;
-  border-radius: 8px;
-  border-left: 5px solid #3498db;
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
-#dashboard .post-item.high {
-  border-left-color: #e74c3c;
+/* Post Header */
+.post-card .post-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  align-items: center;
 }
 
-#dashboard .post-item.medium {
-  border-left-color: #f1c40f;
-}
-
-#dashboard .post-item.low {
-  border-left-color: #2ecc71;
-}
-
-/* ===== Status Message ===== */
-#status {
-  margin-top: 10px;
+.post-card .platform {
   font-weight: bold;
-  color: #27ae60;
+  padding: 4px 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.85rem;
+  text-transform: uppercase;
 }
 
-/* ===== Responsive ===== */
+/* Platform Colors */
+.platform-facebook { background-color: #3b5998; }
+.platform-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.platform-linkedin { background-color: #0077b5; }
+.platform-youtube { background-color: #FF0000; }
+.platform-tikTok { background-color: #69C9D0; }
+
+/* Priority Badge */
+.post-card .priority {
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* Priority Colors */
+.priority-high { background-color: #e53935; }    /* Red */
+.priority-medium { background-color: #fbc02d; }  /* Yellow */
+.priority-low { background-color: #43a047; }     /* Green */
+
+/* Post Content */
+.post-card .post-text {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #333;
+  word-wrap: break-word;
+}
+
+.post-card img,
+.post-card video {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Tags */
+.post-card .tags {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Scheduled Time */
+.post-card .time {
+  font-size: 0.85rem;
+  color: #999;
+  text-align: right;
+  font-style: italic;
+}
+
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-  #filter-section select {
-    width: 100%;
+  #form-section form {
+    flex-direction: column;
+  }
+
+  #dashboard {
+    grid-template-columns: 1fr;
   }
 }
