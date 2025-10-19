@@ -1,177 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>📅 Social Media Scheduler</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
-    header { background: #4a90e2; color: #fff; padding: 20px; text-align: center; }
-    h1, h2 { margin-bottom: 10px; }
-    section { padding: 20px; background: #fff; margin: 20px auto; max-width: 900px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    form label { display: block; margin-top: 15px; font-weight: bold; }
-    form input, form textarea, form select, form button { width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; }
-    form button { background: #4a90e2; color: #fff; font-weight: bold; cursor: pointer; border: none; transition: 0.3s; }
-    form button:hover { background: #357ab8; }
-    #preview img, #preview video { display: block; margin-top: 10px; max-width: 300px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    table, th, td { border: 1px solid #ccc; }
-    th, td { padding: 10px; text-align: left; }
-    select[multiple] { height: 100px; }
-  </style>
+<meta charset="UTF-8">
+<title>📅 Social Media Scheduler</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- ===== Header Section ===== -->
-  <header>
-    <h1>📅 Social Media Scheduler</h1>
-    <p>Schedule posts on multiple platforms & groups at once!</p>
-  </header>
+<!-- ===== HEADER ===== -->
+<header>
+  <h1>📅 Social Media Scheduler</h1>
+  <p>Schedule posts on multiple platforms & groups with live preview!</p>
+</header>
 
-  <!-- ===== Post Form Section ===== -->
-  <section id="form-section">
-    <h2>📝 Create & Schedule a Post</h2>
-    <form id="postForm" enctype="multipart/form-data">
-      <!-- Post Text -->
-      <label for="text">Post Text:</label>
-      <textarea placeholder="Write your post..." id="text" required></textarea>
+<!-- ===== FORM SECTION ===== -->
+<section id="form-section">
+  <h2>📝 Create & Schedule a Post</h2>
+  <form id="postForm">
+    
+    <!-- Post Text -->
+    <label for="text">Post Text:</label>
+    <textarea placeholder="Write your post..." id="text" required></textarea>
 
-      <!-- Platform Selection -->
-      <label for="platform">Select Platforms:</label>
-      <select id="platform" multiple>
-        <option value="facebook">Facebook</option>
-        <option value="instagram">Instagram</option>
-        <option value="linkedin">LinkedIn</option>
-        <option value="youtube">YouTube</option>
-        <option value="tikTok">TikTok</option>
-      </select>
-
-      <!-- Facebook Groups -->
-      <label for="fb-groups">Facebook Groups (Multi-select):</label>
-      <select id="fb-groups" multiple>
-        <option value="group1_id">Group 1</option>
-        <option value="group2_id">Group 2</option>
-      </select>
-
-      <!-- LinkedIn Groups -->
-      <label for="ln-groups">LinkedIn Groups (Multi-select):</label>
-      <select id="ln-groups" multiple>
-        <option value="group1_id">Group 1</option>
-        <option value="group2_id">Group 2</option>
-      </select>
-
-      <!-- Category / Tags -->
-      <label for="category">Category:</label>
-      <select id="category">
-        <option value="marketing">Marketing</option>
-        <option value="announcement">Announcement</option>
-        <option value="event">Event</option>
-        <option value="analytics">Analytics</option>
-      </select>
-
-      <!-- Priority / Urgency -->
-      <label for="priority">Priority:</label>
-      <select id="priority">
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
-
-      <!-- Repeat / Recurring Posts -->
-      <label for="repeat">Repeat:</label>
-      <select id="repeat">
-        <option value="none">None</option>
-        <option value="daily">Daily</option>
-        <option value="weekly">Weekly</option>
-        <option value="monthly">Monthly</option>
-      </select>
-
-      <!-- Upload Media -->
-      <label for="image">Upload Image:</label>
-      <input type="file" id="image" accept="image/*">
-
-      <label for="video">Upload Video:</label>
-      <input type="file" id="video" accept="video/*">
-
-      <label for="documents">Upload Document (PDF, Excel, etc.):</label>
-      <input type="file" id="documents" accept=".pdf,.xlsx,.xls,.csv">
-
-      <!-- Tags / Hashtags -->
-      <label for="tags">Tags / Hashtags:</label>
-      <input type="text" id="tags" placeholder="#marketing #launch">
-
-      <!-- Schedule Time -->
-      <label for="time">Schedule Time:</label>
-      <input type="datetime-local" id="time" required>
-
-      <!-- Submit Button -->
-      <button type="submit">Schedule Post</button>
-    </form>
-
-    <!-- Status Message -->
-    <p id="status"></p>
-  </section>
-
-  <!-- ===== Post Preview Section ===== -->
-  <section id="preview-section">
-    <h2>👁️ Post Preview</h2>
-    <div id="preview">
-      <p id="preview-text"></p>
-      <img id="preview-image" src="" style="display:none;" />
-      <video id="preview-video" controls style="display:none;"></video>
-      <p id="preview-docs"></p>
+    <!-- Platforms -->
+    <label>Select Platforms:</label>
+    <div class="platform-icons">
+      <i class="fab fa-facebook" data-platform="facebook" title="Facebook"></i>
+      <i class="fab fa-linkedin" data-platform="linkedin" title="LinkedIn"></i>
+      <i class="fab fa-instagram" data-platform="instagram" title="Instagram"></i>
+      <i class="fab fa-youtube" data-platform="youtube" title="YouTube"></i>
+      <i class="fab fa-tiktok" data-platform="tikTok" title="TikTok"></i>
     </div>
-  </section>
 
-  <!-- ===== Filter Section ===== -->
-  <section id="filter-section">
-    <h2>🔍 Filter Scheduled Posts</h2>
-    <select id="filter-platform">
-      <option value="all">All Platforms</option>
-      <option value="facebook">Facebook</option>
-      <option value="instagram">Instagram</option>
-      <option value="linkedin">LinkedIn</option>
-      <option value="youtube">YouTube</option>
-      <option value="tikTok">TikTok</option>
-    </select>
+    <!-- Facebook Groups -->
+    <label>Facebook Groups:</label>
+    <div class="group-icons">
+      <i class="fab fa-facebook" data-group="group1_id" title="Group 1"></i>
+      <i class="fab fa-facebook" data-group="group2_id" title="Group 2"></i>
+    </div>
 
-    <select id="filter-category">
-      <option value="all">All Categories</option>
+    <!-- LinkedIn Groups -->
+    <label>LinkedIn Groups:</label>
+    <div class="group-icons">
+      <i class="fab fa-linkedin" data-group="group1_id" title="Group 1"></i>
+      <i class="fab fa-linkedin" data-group="group2_id" title="Group 2"></i>
+    </div>
+
+    <!-- Category -->
+    <label for="category">Category:</label>
+    <select id="category">
       <option value="marketing">Marketing</option>
       <option value="announcement">Announcement</option>
       <option value="event">Event</option>
       <option value="analytics">Analytics</option>
     </select>
 
-    <select id="filter-priority">
-      <option value="all">All Priorities</option>
-      <option value="high">High</option>
-      <option value="medium">Medium</option>
+    <!-- Priority -->
+    <label for="priority">Priority:</label>
+    <select id="priority">
       <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
     </select>
-  </section>
 
-  <!-- ===== Upcoming Posts / Dashboard Section ===== -->
-  <section id="dashboard-section">
-    <h2>📊 Upcoming Scheduled Posts</h2>
-    <table id="dashboard">
-      <thead>
-        <tr>
-          <th>Post Text</th>
-          <th>Platforms</th>
-          <th>Groups</th>
-          <th>Time</th>
-          <th>Priority</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td colspan="5" style="text-align:center;">No posts scheduled yet.</td></tr>
-      </tbody>
-    </table>
-  </section>
+    <!-- Schedule Time -->
+    <label for="time">Schedule Time:</label>
+    <input type="datetime-local" id="time" required>
 
-  <!-- ===== Scripts ===== -->
-  <script src="app.js"></script>
+    <!-- Submit Button -->
+    <button type="submit">Schedule Post</button>
+  </form>
+  <p id="status"></p>
+</section>
+
+<!-- ===== PREVIEW SECTION ===== -->
+<section id="preview-section">
+  <h2>👁️ Live Post Preview</h2>
+  <div id="preview">
+    <p id="preview-text"></p>
+    <span class="tags" id="preview-tags"></span>
+    <img id="preview-image" src="" style="display:none;">
+    <video id="preview-video" controls style="display:none;"></video>
+  </div>
+</section>
+
+<!-- ===== DASHBOARD ===== -->
+<section id="dashboard-section">
+  <h2>📊 Upcoming Scheduled Posts</h2>
+  <table id="dashboard">
+    <thead>
+      <tr>
+        <th>Text</th>
+        <th>Platforms</th>
+        <th>Groups</th>
+        <th>Time</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="5" style="text-align:center;">No posts scheduled yet.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<script src="app.js"></script>
 </body>
 </html>
