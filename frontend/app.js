@@ -8,7 +8,7 @@ form.addEventListener("submit", async (e) => {
     time: document.getElementById("time").value,
   };
 
-  const res = await fetch("https://your-backend-url.onrender.com/add-post", {
+  const res = await fetch("https://social-media-scheduler-seven.vercel.app/add-post", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(post),
