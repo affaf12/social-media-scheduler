@@ -16,21 +16,36 @@
   <!-- ===== Post Form Section ===== -->
   <section id="form-section">
     <h2>📝 Create & Schedule a Post</h2>
-    <form id="postForm">
+    <form id="postForm" enctype="multipart/form-data">
+      
       <!-- Post Text -->
+      <label for="text">Post Text:</label>
       <textarea placeholder="Write your post..." id="text"></textarea>
 
       <!-- Platform Selection -->
+      <label for="platform">Select Platform:</label>
       <select id="platform">
         <option value="facebook">Facebook</option>
         <option value="instagram">Instagram</option>
         <option value="linkedin">LinkedIn</option>
-        <option value="youtube">Youtube</option>
-        <option value="threads">Threads</option>
-        
+        <option value="youtube">YouTube</option>
+        <option value="tikTok">TikTok</option>
       </select>
 
+      <!-- Upload Image -->
+      <label for="image">Upload Image:</label>
+      <input type="file" id="image" accept="image/*">
+
+      <!-- Upload Video -->
+      <label for="video">Upload Video:</label>
+      <input type="file" id="video" accept="video/*">
+
+      <!-- Upload Documents -->
+      <label for="documents">Upload Document (PDF, Excel, etc.):</label>
+      <input type="file" id="documents" accept=".pdf,.xlsx,.xls,.csv">
+
       <!-- Schedule Time -->
+      <label for="time">Schedule Time:</label>
       <input type="datetime-local" id="time">
 
       <!-- Submit Button -->
@@ -45,7 +60,6 @@
   <section id="dashboard-section">
     <h2>📊 Upcoming Scheduled Posts</h2>
     <div id="dashboard">
-      <!-- This is where you can later add a table or calendar view of scheduled posts -->
       <p>No posts scheduled yet.</p>
     </div>
   </section>
