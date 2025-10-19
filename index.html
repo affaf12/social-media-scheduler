@@ -30,7 +30,32 @@
         <option value="linkedin">LinkedIn</option>
         <option value="youtube">YouTube</option>
         <option value="tikTok">TikTok</option>
-        <option value="threads">Threads</option>
+      </select>
+
+      <!-- Category / Tags -->
+      <label for="category">Category:</label>
+      <select id="category">
+        <option value="marketing">Marketing</option>
+        <option value="announcement">Announcement</option>
+        <option value="event">Event</option>
+        <option value="analytics">Analytics</option>
+      </select>
+
+      <!-- Priority / Urgency -->
+      <label for="priority">Priority:</label>
+      <select id="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+
+      <!-- Repeat / Recurring Posts -->
+      <label for="repeat">Repeat:</label>
+      <select id="repeat">
+        <option value="none">None</option>
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
       </select>
 
       <!-- Upload Image -->
@@ -45,6 +70,10 @@
       <label for="documents">Upload Document (PDF, Excel, etc.):</label>
       <input type="file" id="documents" accept=".pdf,.xlsx,.xls,.csv">
 
+      <!-- Tags / Hashtags -->
+      <label for="tags">Tags / Hashtags:</label>
+      <input type="text" id="tags" placeholder="#marketing #launch">
+
       <!-- Schedule Time -->
       <label for="time">Schedule Time:</label>
       <input type="datetime-local" id="time">
@@ -55,6 +84,45 @@
 
     <!-- Status Message -->
     <p id="status"></p>
+  </section>
+
+  <!-- ===== Post Preview Section ===== -->
+  <section id="preview-section">
+    <h2>👁️ Post Preview</h2>
+    <div id="preview">
+      <p id="preview-text"></p>
+      <img id="preview-image" src="" style="max-width:200px; display:none;" />
+      <video id="preview-video" controls style="max-width:200px; display:none;"></video>
+      <p id="preview-docs"></p>
+    </div>
+  </section>
+
+  <!-- ===== Filter Section ===== -->
+  <section id="filter-section">
+    <h2>🔍 Filter Scheduled Posts</h2>
+    <select id="filter-platform">
+      <option value="all">All Platforms</option>
+      <option value="facebook">Facebook</option>
+      <option value="instagram">Instagram</option>
+      <option value="linkedin">LinkedIn</option>
+      <option value="youtube">YouTube</option>
+      <option value="tikTok">TikTok</option>
+    </select>
+
+    <select id="filter-category">
+      <option value="all">All Categories</option>
+      <option value="marketing">Marketing</option>
+      <option value="announcement">Announcement</option>
+      <option value="event">Event</option>
+      <option value="analytics">Analytics</option>
+    </select>
+
+    <select id="filter-priority">
+      <option value="all">All Priorities</option>
+      <option value="high">High</option>
+      <option value="medium">Medium</option>
+      <option value="low">Low</option>
+    </select>
   </section>
 
   <!-- ===== Upcoming Posts / Dashboard Section ===== -->
