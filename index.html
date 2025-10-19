@@ -1,26 +1,56 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Social Media Scheduler</title>
+  <!-- ===== CSS Styling ===== -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>📅 Social Media Scheduler</h1>
-  <form id="postForm">
-    <textarea placeholder="Write your post..." id="text"></textarea>
-    <select id="platform">
-      <option value="facebook">Facebook</option>
-      <option value="instagram">Instagram</option>
-      <option value="linkedin">LinkedIn</option>
-    </select>
-    <input type="datetime-local" id="time">
-    <button type="submit">Schedule Post</button>
-  </form>
 
-  <p id="status"></p>
+  <!-- ===== Header Section ===== -->
+  <header>
+    <h1>📅 Social Media Scheduler</h1>
+  </header>
 
+  <!-- ===== Post Form Section ===== -->
+  <section id="form-section">
+    <h2>📝 Create & Schedule a Post</h2>
+    <form id="postForm">
+      <!-- Post Text -->
+      <textarea placeholder="Write your post..." id="text"></textarea>
+
+      <!-- Platform Selection -->
+      <select id="platform">
+        <option value="facebook">Facebook</option>
+        <option value="instagram">Instagram</option>
+        <option value="linkedin">LinkedIn</option>
+        <option value="youtube">Youtube</option>
+        <option value="threads">Threads</option>
+        
+      </select>
+
+      <!-- Schedule Time -->
+      <input type="datetime-local" id="time">
+
+      <!-- Submit Button -->
+      <button type="submit">Schedule Post</button>
+    </form>
+
+    <!-- Status Message -->
+    <p id="status"></p>
+  </section>
+
+  <!-- ===== Upcoming Posts / Dashboard Section ===== -->
+  <section id="dashboard-section">
+    <h2>📊 Upcoming Scheduled Posts</h2>
+    <div id="dashboard">
+      <!-- This is where you can later add a table or calendar view of scheduled posts -->
+      <p>No posts scheduled yet.</p>
+    </div>
+  </section>
+
+  <!-- ===== Scripts ===== -->
   <script src="app.js"></script>
 </body>
 </html>
