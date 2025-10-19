@@ -17,3 +17,24 @@ form.addEventListener("submit", async (e) => {
   const data = await res.json();
   document.getElementById("status").innerText = data.message;
 });
+
+
+// ===== Simple Email Gate =====
+    const signupForm = document.getElementById('signupForm');
+    const userEmail = document.getElementById('userEmail');
+    const signupStatus = document.getElementById('signup-status');
+    const formSection = document.getElementById('form-section');
+
+    signupForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const email = userEmail.value.trim();
+      if(email && email.endsWith('@gmail.com')){
+        signupStatus.innerText = `✅ Welcome ${email}! You can now schedule posts.`;
+        formSection.style.display = 'block'; // Show scheduler form
+        document.getElementById('signup-section').style.display = 'none'; // Hide signup
+      } else {
+        signupStatus.innerText = '❌ Please enter a valid Gmail address.';
+      }
+    });
+
+
