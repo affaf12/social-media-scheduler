@@ -2,14 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Social Media Scheduler</title>
+  <title>📅 Social Media Scheduler</title>
   <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
+    header { background: #4a90e2; color: #fff; padding: 20px; text-align: center; }
+    h1, h2 { margin-bottom: 10px; }
+    section { padding: 20px; background: #fff; margin: 20px auto; max-width: 900px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    form label { display: block; margin-top: 15px; font-weight: bold; }
+    form input, form textarea, form select, form button { width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; }
+    form button { background: #4a90e2; color: #fff; font-weight: bold; cursor: pointer; border: none; transition: 0.3s; }
+    form button:hover { background: #357ab8; }
+    #preview img, #preview video { display: block; margin-top: 10px; max-width: 300px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    table, th, td { border: 1px solid #ccc; }
+    th, td { padding: 10px; text-align: left; }
+    select[multiple] { height: 100px; }
+  </style>
 </head>
 <body>
 
   <!-- ===== Header Section ===== -->
   <header>
     <h1>📅 Social Media Scheduler</h1>
+    <p>Schedule posts on multiple platforms & groups at once!</p>
   </header>
 
   <!-- ===== Post Form Section ===== -->
@@ -18,16 +35,30 @@
     <form id="postForm" enctype="multipart/form-data">
       <!-- Post Text -->
       <label for="text">Post Text:</label>
-      <textarea placeholder="Write your post..." id="text"></textarea>
+      <textarea placeholder="Write your post..." id="text" required></textarea>
 
       <!-- Platform Selection -->
-      <label for="platform">Select Platform:</label>
-      <select id="platform">
+      <label for="platform">Select Platforms:</label>
+      <select id="platform" multiple>
         <option value="facebook">Facebook</option>
         <option value="instagram">Instagram</option>
         <option value="linkedin">LinkedIn</option>
         <option value="youtube">YouTube</option>
         <option value="tikTok">TikTok</option>
+      </select>
+
+      <!-- Facebook Groups -->
+      <label for="fb-groups">Facebook Groups (Multi-select):</label>
+      <select id="fb-groups" multiple>
+        <option value="group1_id">Group 1</option>
+        <option value="group2_id">Group 2</option>
+      </select>
+
+      <!-- LinkedIn Groups -->
+      <label for="ln-groups">LinkedIn Groups (Multi-select):</label>
+      <select id="ln-groups" multiple>
+        <option value="group1_id">Group 1</option>
+        <option value="group2_id">Group 2</option>
       </select>
 
       <!-- Category / Tags -->
@@ -56,15 +87,13 @@
         <option value="monthly">Monthly</option>
       </select>
 
-      <!-- Upload Image -->
+      <!-- Upload Media -->
       <label for="image">Upload Image:</label>
       <input type="file" id="image" accept="image/*">
 
-      <!-- Upload Video -->
       <label for="video">Upload Video:</label>
       <input type="file" id="video" accept="video/*">
 
-      <!-- Upload Documents -->
       <label for="documents">Upload Document (PDF, Excel, etc.):</label>
       <input type="file" id="documents" accept=".pdf,.xlsx,.xls,.csv">
 
@@ -74,7 +103,7 @@
 
       <!-- Schedule Time -->
       <label for="time">Schedule Time:</label>
-      <input type="datetime-local" id="time">
+      <input type="datetime-local" id="time" required>
 
       <!-- Submit Button -->
       <button type="submit">Schedule Post</button>
@@ -89,8 +118,8 @@
     <h2>👁️ Post Preview</h2>
     <div id="preview">
       <p id="preview-text"></p>
-      <img id="preview-image" src="" style="max-width:200px; display:none;" />
-      <video id="preview-video" controls style="max-width:200px; display:none;"></video>
+      <img id="preview-image" src="" style="display:none;" />
+      <video id="preview-video" controls style="display:none;"></video>
       <p id="preview-docs"></p>
     </div>
   </section>
@@ -126,13 +155,23 @@
   <!-- ===== Upcoming Posts / Dashboard Section ===== -->
   <section id="dashboard-section">
     <h2>📊 Upcoming Scheduled Posts</h2>
-    <div id="dashboard">
-      <p>No posts scheduled yet.</p>
-    </div>
+    <table id="dashboard">
+      <thead>
+        <tr>
+          <th>Post Text</th>
+          <th>Platforms</th>
+          <th>Groups</th>
+          <th>Time</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="5" style="text-align:center;">No posts scheduled yet.</td></tr>
+      </tbody>
+    </table>
   </section>
 
   <!-- ===== Scripts ===== -->
   <script src="app.js"></script>
 </body>
 </html>
-
