@@ -1,256 +1,238 @@
-/* ================= GENERAL STYLES ================= */
+/* ===== GENERAL RESET ===== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  background-color: #f4f6f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
   color: #333;
   line-height: 1.6;
-  padding: 20px;
 }
 
-/* ================= HEADER ================= */
+/* ===== HEADER ===== */
 header {
+  background: linear-gradient(90deg, #4a90e2, #357ab8);
+  color: #fff;
+  padding: 30px 20px;
   text-align: center;
-  margin-bottom: 30px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
 header h1 {
-  font-size: 2.8rem;
-  color: #4CAF50;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  font-size: 2.4rem;
+  margin-bottom: 5px;
 }
 
-/* ================= SECTIONS ================= */
+header p {
+  font-size: 1.1rem;
+  color: #e0e7ff;
+}
+
+/* ===== SECTIONS ===== */
 section {
-  background-color: #fff;
+  background: #fff;
+  margin: 25px auto;
+  max-width: 1000px;
   padding: 25px 30px;
-  margin-bottom: 20px;
   border-radius: 15px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-section h2 {
+h2 {
+  font-size: 1.8rem;
+  color: #4a4a4a;
   margin-bottom: 20px;
-  font-size: 1.9rem;
-  color: #333;
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid #e0e0e0;
   padding-bottom: 10px;
 }
 
-/* ================= FORMS ================= */
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
+/* ===== FORM ===== */
+form label {
+  display: block;
+  margin-top: 15px;
   font-weight: 600;
-  margin-bottom: 8px;
-  color: #555;
+  color: #4a4a4a;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="datetime-local"],
-select,
-textarea,
-button {
-  padding: 12px 15px;
-  margin-bottom: 15px;
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 5px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  font-size: 16px;
-  outline: none;
-  transition: all 0.3s ease;
+  transition: 0.3s;
+  font-size: 0.95rem;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="datetime-local"]:focus,
-select:focus,
-textarea:focus {
-  border-color: #4CAF50;
-  box-shadow: 0 0 6px rgba(76,175,80,0.3);
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+  outline: none;
 }
 
 textarea {
+  min-height: 120px;
   resize: vertical;
-  min-height: 100px;
 }
 
-input[type="file"] {
-  padding: 6px;
-}
-
-/* ================= BUTTON ================= */
-button {
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 16px;
-  transition: 0.3s;
-}
-
-button:hover {
-  background-color: #45a049;
-  transform: translateY(-2px);
-}
-
-/* ================= STATUS MESSAGES ================= */
-#status {
-  font-weight: bold;
-  font-size: 1rem;
-  color: #333;
+/* ===== PLATFORM & GROUP BUTTONS ===== */
+.platform-icons,
+.group-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 10px;
 }
 
-/* ================= PREVIEW ================= */
-#preview {
+.platform-btn,
+.group-btn {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f0f4f8;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
 }
 
-#preview p {
-  font-size: 1rem;
-  word-wrap: break-word;
+.platform-btn i,
+.group-btn i {
+  font-size: 1.2rem;
+}
+
+.platform-btn.active,
+.group-btn.active {
+  background: #4a90e2;
+  color: #fff;
+  border-color: #357ab8;
+}
+
+/* ===== BUTTON ===== */
+.submit-btn {
+  background: linear-gradient(90deg, #4a90e2, #357ab8);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(90deg, #357ab8, #285a91);
+}
+
+/* ===== TAGS & PRIORITY ===== */
+.tags {
+  color: #4a90e2;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.priority-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #fff;
+}
+
+.priority-low {
+  background: #4caf50;
+}
+
+.priority-medium {
+  background: #ff9800;
+}
+
+.priority-high {
+  background: #f44336;
+}
+
+/* ===== PREVIEW ===== */
+#preview {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
+  min-height: 120px;
 }
 
 #preview img,
 #preview video {
+  display: block;
+  margin-top: 10px;
+  max-width: 400px;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* ================= FILTERS ================= */
-#filter-section select {
+/* ===== DASHBOARD ===== */
+table {
   width: 100%;
-  margin-bottom: 12px;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  transition: all 0.3s;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-#filter-section select:focus {
-  border-color: #4CAF50;
-  box-shadow: 0 0 6px rgba(76,175,80,0.3);
-}
-
-/* ================= DASHBOARD ================= */
-#dashboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 10px;
-  background: #f4f6f8;
-}
-
-/* ================= MODERN CARD-STYLE DASHBOARD ================= */
-.post-card {
-  background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.post-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-}
-
-/* Post Header */
-.post-card .post-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  align-items: center;
-}
-
-.post-card .platform {
-  font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 8px;
+table thead {
+  background: #4a90e2;
   color: #fff;
-  font-size: 0.85rem;
-  text-transform: uppercase;
 }
 
-/* Platform Colors */
-.platform-facebook { background-color: #3b5998; }
-.platform-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-.platform-linkedin { background-color: #0077b5; }
-.platform-youtube { background-color: #FF0000; }
-.platform-tikTok { background-color: #69C9D0; }
-
-/* Priority Badge */
-.post-card .priority {
-  font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  color: #fff;
-  text-transform: uppercase;
+table th,
+table td {
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+  font-size: 0.95rem;
 }
 
-/* Priority Colors */
-.priority-high { background-color: #e53935; }    /* Red */
-.priority-medium { background-color: #fbc02d; }  /* Yellow */
-.priority-low { background-color: #43a047; }     /* Green */
-
-/* Post Content */
-.post-card .post-text {
-  margin-bottom: 12px;
-  font-size: 1rem;
-  color: #333;
-  word-wrap: break-word;
+table tbody tr:nth-child(even) {
+  background: #f7f9fc;
 }
 
-.post-card img,
-.post-card video {
-  max-width: 100%;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+table tbody tr:hover {
+  background: #e8f0fe;
 }
 
-/* Tags */
-.post-card .tags {
-  font-size: 0.85rem;
-  color: #666;
-  margin-bottom: 8px;
+/* ===== STATUS MESSAGE ===== */
+#status {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #4a90e2;
 }
 
-/* Scheduled Time */
-.post-card .time {
-  font-size: 0.85rem;
-  color: #999;
-  text-align: right;
-  font-style: italic;
-}
-
-/* ================= RESPONSIVE ================= */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  #form-section form {
+  .platform-icons,
+  .group-icons {
     flex-direction: column;
   }
 
-  #dashboard {
-    grid-template-columns: 1fr;
+  .platform-btn,
+  .group-btn {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  form button {
+    width: 100%;
   }
 }
