@@ -9,87 +9,91 @@
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- ========================= HEADER ========================= -->
 <header>
   <h1>📅 Social Media Scheduler</h1>
   <p>Schedule posts on multiple platforms & groups with live preview!</p>
 </header>
 
-<!-- ===== MAIN SECTION ===== -->
+<!-- ========================= MAIN SECTION ========================= -->
 <main id="main-section">
 
-  <!-- ===== LEFT PANEL ===== -->
+  <!-- ========================= LEFT PANEL: FORM ========================= -->
   <aside class="left-panel">
     <h2>📝 Create & Schedule a Post</h2>
     <form id="postForm">
 
-<!-- ========================= PLATFORMS DROPDOWN ========================= -->
-<label for="platforms">Select Platforms:</label>
+      <!-- ========================= PLATFORMS DROPDOWN ========================= -->
+      <label for="platforms">Select Platforms:</label>
+      <div class="group-dropdown" id="platform-dropdown">
+        <!-- Tag chips container -->
+        <div class="tag-container" id="platform-tags"></div>
 
-<div class="group-dropdown" id="platform-dropdown">
-  <!-- Tag chips container -->
-  <div class="tag-container" id="platform-tags"></div>
+        <!-- Dropdown button -->
+        <div class="dropdown-btn" id="platform-btn">
+          Select Platforms
+          <i class="fas fa-chevron-down"></i>
+        </div>
 
-  <!-- Dropdown button -->
-  <div class="dropdown-btn" id="platform-btn">
-    Select Platforms
-    <i class="fas fa-chevron-down"></i>
-  </div>
+        <!-- Dropdown content -->
+        <div class="dropdown-content platform-group" id="platform-options">
+          <label><input type="checkbox" value="facebook"> <span class="checkmark"></span> Facebook</label>
+          <label><input type="checkbox" value="linkedin"> <span class="checkmark"></span> LinkedIn</label>
+          <label><input type="checkbox" value="instagram"> <span class="checkmark"></span> Instagram</label>
+          <label><input type="checkbox" value="youtube"> <span class="checkmark"></span> YouTube</label>
+          <label><input type="checkbox" value="tiktok"> <span class="checkmark"></span> TikTok</label>
+          <label><input type="checkbox" value="twitter"> <span class="checkmark"></span> Twitter</label>
+          <label><input type="checkbox" value="pinterest"> <span class="checkmark"></span> Pinterest</label>
+          <label><input type="checkbox" value="snapchat"> <span class="checkmark"></span> Snapchat</label>
+        </div>
+      </div>
+      <small>Click dropdown to select multiple platforms</small>
 
-  <!-- Dropdown content -->
-  <div class="dropdown-content platform-group" id="platform-options">
-    <label>
-      <input type="checkbox" value="facebook"> 
-      <span class="checkmark"></span> Facebook
-    </label>
-    <label>
-      <input type="checkbox" value="linkedin"> 
-      <span class="checkmark"></span> LinkedIn
-    </label>
-    <label>
-      <input type="checkbox" value="instagram"> 
-      <span class="checkmark"></span> Instagram
-    </label>
-    <label>
-      <input type="checkbox" value="youtube"> 
-      <span class="checkmark"></span> YouTube
-    </label>
-    <label>
-      <input type="checkbox" value="tiktok"> 
-      <span class="checkmark"></span> TikTok
-    </label>
-  </div>
-</div>
+      <!-- ========================= GROUPS DROPDOWN ========================= -->
+      <label for="groups">Select Groups:</label>
+      <div class="group-dropdown" id="group-dropdown">
+        <!-- Tag chips container -->
+        <div class="tag-container" id="group-tags"></div>
 
-<small>Click dropdown to select multiple platforms</small>
+        <!-- Dropdown button -->
+        <div class="dropdown-btn" id="group-btn">
+          Choose Groups
+          <i class="fas fa-chevron-down"></i>
+        </div>
 
+        <!-- Dropdown content -->
+        <div class="dropdown-content" id="group-options">
 
+          <!-- Facebook Groups -->
+          <div class="platform-group">
+            <strong>Facebook</strong>
+            <label><input type="checkbox" value="fb_group1"> FB Group 1</label>
+            <label><input type="checkbox" value="fb_group2"> FB Group 2</label>
+          </div>
 
-     <!-- Groups -->
-<label for="groups">Select Groups:</label>
-<div class="group-dropdown">
-  <button type="button" class="dropdown-btn">Choose Groups <i class="fa fa-caret-down"></i></button>
-  <div class="dropdown-content">
-    <!-- Facebook Groups -->
-    <div class="platform-group">
-      <strong>Facebook</strong>
-      <label><input type="checkbox" name="groups" value="fb_group1"> FB Group 1</label>
-      <label><input type="checkbox" name="groups" value="fb_group2"> FB Group 2</label>
-    </div>
-    <!-- LinkedIn Groups -->
-    <div class="platform-group">
-      <strong>LinkedIn</strong>
-      <label><input type="checkbox" name="groups" value="ln_group1"> LN Group 1</label>
-      <label><input type="checkbox" name="groups" value="ln_group2"> LN Group 2</label>
-    </div>
-  </div>
-</div>
+          <!-- LinkedIn Groups -->
+          <div class="platform-group">
+            <strong>LinkedIn</strong>
+            <label><input type="checkbox" value="ln_group1"> LN Group 1</label>
+            <label><input type="checkbox" value="ln_group2"> LN Group 2</label>
+          </div>
 
-      <!-- Tags / Hashtags -->
+          <!-- Instagram Groups -->
+          <div class="platform-group">
+            <strong>Instagram</strong>
+            <label><input type="checkbox" value="ig_group1"> IG Group 1</label>
+            <label><input type="checkbox" value="ig_group2"> IG Group 2</label>
+          </div>
+
+        </div>
+      </div>
+      <small>Click dropdown to select multiple groups</small>
+
+      <!-- ========================= TAGS INPUT ========================= -->
       <label for="tags">Tags / Hashtags:</label>
       <input type="text" id="tags" placeholder="#marketing #launch">
 
-      <!-- Priority -->
+      <!-- ========================= PRIORITY SELECT ========================= -->
       <label for="priority">Priority:</label>
       <select id="priority">
         <option value="low">Low</option>
@@ -97,29 +101,29 @@
         <option value="high">High</option>
       </select>
 
-      <!-- Media Upload -->
+      <!-- ========================= MEDIA UPLOAD ========================= -->
       <label>Upload Media:</label>
       <input type="file" id="image" accept="image/*">
       <input type="file" id="video" accept="video/*">
 
-      <!-- Schedule Time -->
+      <!-- ========================= SCHEDULE TIME ========================= -->
       <label for="time">Schedule Time:</label>
       <input type="datetime-local" id="time" required>
 
-      <!-- Submit Button -->
+      <!-- ========================= SUBMIT BUTTON ========================= -->
       <button type="submit" class="submit-btn">Schedule Post</button>
       <p id="status"></p>
     </form>
   </aside>
 
-  <!-- ===== RIGHT PANEL ===== -->
+  <!-- ========================= RIGHT PANEL: LIVE PREVIEW & DASHBOARD ========================= -->
   <section class="right-panel">
 
-    <!-- Post Text -->
+    <!-- ========================= POST TEXT AREA ========================= -->
     <label for="text">Post Text:</label>
     <textarea id="text" placeholder="Write your post..." required></textarea>
     
-    <!-- Live Preview -->
+    <!-- ========================= LIVE POST PREVIEW ========================= -->
     <div class="panel-section" id="preview-section">
       <h2>👁️ Live Post Preview</h2>
       <div id="preview">
@@ -129,7 +133,7 @@
       </div>
     </div>
 
-    <!-- Dashboard -->
+    <!-- ========================= DASHBOARD ========================= -->
     <div class="panel-section" id="dashboard-section">
       <h2>📊 Upcoming Scheduled Posts</h2>
       <table id="dashboard">
@@ -153,6 +157,8 @@
   </section>
 </main>
 
+<!-- ========================= SCRIPT ========================= -->
 <script src="app.js"></script>
+
 </body>
 </html>
