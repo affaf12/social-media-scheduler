@@ -322,3 +322,75 @@ input[type="file"] {
     width: 100%;
   }
 }
+
+
+
+/* ========================= API SECTION STYLES ========================= */
+#api-section {
+  margin-top: 30px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.api-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.api-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.api-field label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.api-field input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.api-field input:focus {
+  border-color: #4a90e2;
+}
+
+.api-status {
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
+.api-status.connected {
+  color: green;
+}
+
+.api-status.disconnected {
+  color: red;
+}
+
+.api-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.danger-btn {
+  background-color: #e63946;
+  color: #fff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.danger-btn:hover {
+  background-color: #d62828;
+}
