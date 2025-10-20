@@ -415,10 +415,12 @@ input[type="file"] {
   background-color: #d62828;
 }
 
-/* ===== HIDE the API setup section from everyone ===== */
-#api-setup {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  overflow: hidden !important;
+/* ========================= COMPLETELY HIDE API SECTION ========================= */
+#api-section {
+  display: none !important;       /* Fully removes from layout */
+  visibility: hidden !important;  /* Makes it invisible */
+  opacity: 0 !important;          /* Ensures it's transparent */
+  height: 0 !important;           /* Removes space */
+  overflow: hidden !important;    /* Prevents any content overflow */
+  pointer-events: none !important;/* Disables all interaction */
 }
