@@ -8,7 +8,8 @@ function initTagDropdown(dropdownId, btnId, contentId, tagContainerId) {
   const checkboxes = content.querySelectorAll('input[type="checkbox"]');
 
   // Toggle dropdown
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
     dropdown.classList.toggle('show');
     content.style.display = dropdown.classList.contains('show') ? 'block' : 'none';
   });
@@ -23,9 +24,7 @@ function initTagDropdown(dropdownId, btnId, contentId, tagContainerId) {
 
   // Handle checkbox selection
   checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', () => {
-      updateTags();
-    });
+    checkbox.addEventListener('change', updateTags);
   });
 
   // Update tags function
@@ -51,6 +50,7 @@ function initTagDropdown(dropdownId, btnId, contentId, tagContainerId) {
       }
     });
 
+    // Update button text
     btn.textContent = selected.length ? selected.join(', ') : btn.getAttribute('data-default');
     const icon = document.createElement('i');
     icon.classList.add('fas', 'fa-chevron-down');
@@ -61,24 +61,19 @@ function initTagDropdown(dropdownId, btnId, contentId, tagContainerId) {
   btn.setAttribute('data-default', btn.textContent);
 }
 
-
 /* ========================= 2. INITIALIZE DROPDOWNS ========================= */
 document.addEventListener('DOMContentLoaded', () => {
   // Platforms dropdown
   initTagDropdown('platform-dropdown', 'platform-btn', 'platform-options', 'platform-tags');
 
-  // Groups dropdown
+  // Groups dropdown(s)
   const groupDropdowns = document.querySelectorAll('.group-dropdown:not(#platform-dropdown)');
   groupDropdowns.forEach((drop, index) => {
-    // Add a tag container dynamically
-    const tagContainer = document.createElement('div');
-    tagContainer.classList.add('tag-container');
-    drop.insertBefore(tagContainer, drop.querySelector('.dropdown-btn').nextSibling);
-
+    const tagContainer = drop.querySelector('.tag-container');
     const btn = drop.querySelector('.dropdown-btn');
     const content = drop.querySelector('.dropdown-content');
 
-    // Create unique IDs
+    // Assign unique IDs
     const dropdownId = `group-dropdown-${index}`;
     const btnId = `group-btn-${index}`;
     const contentId = `group-options-${index}`;
@@ -92,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initTagDropdown(dropdownId, btnId, contentId, tagContainerId);
   });
 });
-
 
 /* ========================= 3. LIVE MEDIA PREVIEW ========================= */
 const imageInput = document.getElementById('image');
@@ -120,7 +114,6 @@ videoInput.addEventListener('change', (e) => {
   }
 });
 
-
 /* ========================= 4. FORM SUBMISSION & DASHBOARD UPDATE ========================= */
 const form = document.getElementById("postForm");
 const dashboardBody = document.querySelector('#dashboard tbody');
@@ -130,13 +123,11 @@ form.addEventListener("submit", async (e) => {
 
   // Get selected platforms
   const platformCheckboxes = document.querySelectorAll('#platform-options input[type="checkbox"]');
-  const selectedPlatforms = [];
-  platformCheckboxes.forEach(cb => { if (cb.checked) selectedPlatforms.push(cb.value); });
+  const selectedPlatforms = Array.from(platformCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
 
   // Get selected groups
   const groupCheckboxes = document.querySelectorAll('.group-dropdown .dropdown-content input[type="checkbox"]');
-  const selectedGroups = [];
-  groupCheckboxes.forEach(cb => { if (cb.checked) selectedGroups.push(cb.value); });
+  const selectedGroups = Array.from(groupCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
 
   const post = {
     text: document.getElementById("text").value,
@@ -160,39 +151,20 @@ form.addEventListener("submit", async (e) => {
     // ========================= UPDATE DASHBOARD =========================
     const newRow = document.createElement('tr');
 
-    // Post text
-    const textCell = document.createElement('td');
-    textCell.textContent = post.text;
-    newRow.appendChild(textCell);
+    newRow.innerHTML = `
+      <td>${post.text}</td>
+      <td>${post.platform.join(', ')}</td>
+      <td>${post.groups.join(', ')}</td>
+      <td>${post.time}</td>
+      <td>${post.priority}</td>
+    `;
 
-    // Platforms
-    const platformCell = document.createElement('td');
-    platformCell.textContent = post.platform.join(', ');
-    newRow.appendChild(platformCell);
-
-    // Groups
-    const groupsCell = document.createElement('td');
-    groupsCell.textContent = post.groups.join(', ');
-    newRow.appendChild(groupsCell);
-
-    // Scheduled time
-    const timeCell = document.createElement('td');
-    timeCell.textContent = post.time;
-    newRow.appendChild(timeCell);
-
-    // Priority
-    const priorityCell = document.createElement('td');
-    priorityCell.textContent = post.priority;
-    newRow.appendChild(priorityCell);
-
-    // Remove "No posts scheduled yet." row if exists
+    // Remove placeholder row if exists
     const emptyRow = dashboardBody.querySelector('tr td[colspan="5"]');
     if (emptyRow) dashboardBody.innerHTML = '';
 
     dashboardBody.appendChild(newRow);
 
-    // Optionally reset form
-    // form.reset();
   } catch (err) {
     console.error(err);
     document.getElementById("status").innerText = "Error sending post. Try again!";
