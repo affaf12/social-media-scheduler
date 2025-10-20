@@ -375,3 +375,64 @@ style.innerHTML = `
   }
 `;
 document.head.appendChild(style);
+
+
+/* ========================= 6. API CONFIGURATION SECTION ========================= */
+const apiForm = document.getElementById("apiForm");
+const clearBtn = document.getElementById("clear-api");
+
+// Load saved API keys from localStorage on startup
+document.addEventListener("DOMContentLoaded", loadApiKeys);
+
+function loadApiKeys() {
+  const keys = JSON.parse(localStorage.getItem("apiKeys") || "{}");
+  const platforms = ["facebook", "linkedin", "instagram", "twitter"];
+
+  platforms.forEach((p) => {
+    const input = document.getElementById(`${p}-api`);
+    const status = document.getElementById(`${p}-status`);
+    if (!input || !status) return;
+
+    if (keys[p]) {
+      input.value = keys[p];
+      status.textContent = "✅ Connected";
+      status.classList.add("connected");
+      status.classList.remove("disconnected");
+    } else {
+      status.textContent = "❌ Not Connected";
+      status.classList.add("disconnected");
+      status.classList.remove("connected");
+    }
+  });
+}
+
+// Save API keys to localStorage
+if (apiForm) {
+  apiForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const keys = {
+      facebook: document.getElementById("facebook-api").value.trim(),
+      linkedin: document.getElementById("linkedin-api").value.trim(),
+      instagram: document.getElementById("instagram-api").value.trim(),
+      twitter: document.getElementById("twitter-api").value.trim(),
+    };
+
+    localStorage.setItem("apiKeys", JSON.stringify(keys));
+
+    loadApiKeys();
+    alert("✅ API tokens saved locally!");
+  });
+}
+
+// Clear all API keys
+if (clearBtn) {
+  clearBtn.addEventListener("click", () => {
+    if (confirm("Are you sure you want to clear all API tokens?")) {
+      localStorage.removeItem("apiKeys");
+      loadApiKeys();
+      alert("🧹 All API tokens cleared!");
+    }
+  });
+}
+
