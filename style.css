@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f0f4f8;
+  background: #f4f7fa;
   color: #333;
   line-height: 1.6;
 }
@@ -16,45 +16,51 @@ body {
 header {
   background: linear-gradient(90deg, #4a90e2, #357ab8);
   color: #fff;
-  padding: 30px 20px;
+  padding: 35px 20px;
   text-align: center;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 header h1 {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   margin-bottom: 5px;
 }
 
 header p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #e0e7ff;
+  font-weight: 400;
 }
 
 /* ===== SECTIONS ===== */
 section {
   background: #fff;
-  margin: 25px auto;
-  max-width: 1000px;
-  padding: 25px 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  margin: 30px auto;
+  max-width: 1050px;
+  padding: 30px 35px;
+  border-radius: 18px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s;
+}
+
+section:hover {
+  transform: translateY(-2px);
 }
 
 h2 {
-  font-size: 1.8rem;
-  color: #4a4a4a;
+  font-size: 2rem;
+  color: #333;
   margin-bottom: 20px;
   border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 }
 
-/* ===== FORM ===== */
+/* ===== FORM LABELS & INPUTS ===== */
 form label {
   display: block;
-  margin-top: 15px;
+  margin-top: 18px;
   font-weight: 600;
   color: #4a4a4a;
 }
@@ -63,24 +69,25 @@ form input,
 form textarea,
 form select {
   width: 100%;
-  padding: 12px 14px;
-  margin-top: 5px;
-  border-radius: 10px;
+  padding: 14px 16px;
+  margin-top: 6px;
+  border-radius: 12px;
   border: 1px solid #ccc;
-  transition: 0.3s;
-  font-size: 0.95rem;
+  transition: all 0.3s;
+  font-size: 1rem;
+  background: #f9f9f9;
 }
 
 form input:focus,
 form textarea:focus,
 form select:focus {
   border-color: #4a90e2;
-  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+  box-shadow: 0 0 12px rgba(74, 144, 226, 0.25);
   outline: none;
 }
 
 textarea {
-  min-height: 120px;
+  min-height: 140px;
   resize: vertical;
 }
 
@@ -89,27 +96,36 @@ textarea {
 .group-icons {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 .platform-btn,
 .group-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 15px;
+  gap: 10px;
+  padding: 12px 18px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #f0f4f8;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s;
   font-weight: 600;
+  position: relative;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
 .platform-btn i,
 .group-btn i {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+}
+
+.platform-btn:hover,
+.group-btn:hover {
+  background: #4a90e2;
+  color: #fff;
+  border-color: #357ab8;
 }
 
 .platform-btn.active,
@@ -117,25 +133,49 @@ textarea {
   background: #4a90e2;
   color: #fff;
   border-color: #357ab8;
+  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
 }
 
-/* ===== BUTTON ===== */
+/* Checkmark for group buttons */
+.group-btn .checkmark {
+  display: none;
+  position: absolute;
+  right: 12px;
+  font-size: 1rem;
+  color: #fff;
+  background: #4caf50;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.group-btn.active .checkmark {
+  display: block;
+}
+
+/* ===== SUBMIT BUTTON ===== */
 .submit-btn {
   background: linear-gradient(90deg, #4a90e2, #357ab8);
   color: #fff;
   font-weight: bold;
   cursor: pointer;
   border: none;
-  padding: 14px;
-  border-radius: 10px;
-  margin-top: 20px;
-  font-size: 1.1rem;
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 25px;
+  font-size: 1.15rem;
   width: 100%;
-  transition: 0.3s;
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .submit-btn:hover {
   background: linear-gradient(90deg, #357ab8, #285a91);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* ===== TAGS & PRIORITY ===== */
@@ -144,15 +184,17 @@ textarea {
   font-weight: 600;
   display: inline-block;
   margin-top: 10px;
+  font-size: 0.95rem;
 }
 
 .priority-badge {
   display: inline-block;
   margin-top: 10px;
-  padding: 5px 10px;
-  border-radius: 8px;
+  padding: 6px 12px;
+  border-radius: 10px;
   font-size: 0.85rem;
   color: #fff;
+  font-weight: 600;
 }
 
 .priority-low {
@@ -170,38 +212,39 @@ textarea {
 /* ===== PREVIEW ===== */
 #preview {
   background: #f9f9f9;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
-  min-height: 120px;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.08);
+  min-height: 150px;
+  transition: all 0.3s;
 }
 
 #preview img,
 #preview video {
   display: block;
-  margin-top: 10px;
-  max-width: 400px;
-  border-radius: 10px;
+  margin-top: 15px;
+  max-width: 450px;
+  border-radius: 12px;
 }
 
 /* ===== DASHBOARD ===== */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 25px;
+  font-size: 0.95rem;
 }
 
 table thead {
-  background: #4a90e2;
+  background: linear-gradient(90deg, #4a90e2, #357ab8);
   color: #fff;
 }
 
 table th,
 table td {
-  padding: 12px 15px;
+  padding: 14px 16px;
   border: 1px solid #e0e0e0;
   text-align: left;
-  font-size: 0.95rem;
 }
 
 table tbody tr:nth-child(even) {
@@ -210,11 +253,12 @@ table tbody tr:nth-child(even) {
 
 table tbody tr:hover {
   background: #e8f0fe;
+  transform: scale(1.01);
 }
 
 /* ===== STATUS MESSAGE ===== */
 #status {
-  margin-top: 15px;
+  margin-top: 18px;
   font-weight: 600;
   color: #4a90e2;
 }
@@ -234,5 +278,10 @@ table tbody tr:hover {
 
   form button {
     width: 100%;
+  }
+
+  #preview img,
+  #preview video {
+    max-width: 100%;
   }
 }
