@@ -23,16 +23,46 @@
     <h2>📝 Create & Schedule a Post</h2>
     <form id="postForm">
 
-<!-- Platforms -->
+<!-- ========================= PLATFORMS DROPDOWN ========================= -->
 <label for="platforms">Select Platforms:</label>
-<select id="platforms" multiple>
-  <option value="facebook">Facebook <i class="fab fa-facebook"></i></option>
-  <option value="linkedin">LinkedIn <i class="fab fa-linkedin"></i></option>
-  <option value="instagram">Instagram <i class="fab fa-instagram"></i></option>
-  <option value="youtube">YouTube <i class="fab fa-youtube"></i></option>
-  <option value="tikTok">TikTok <i class="fab fa-tiktok"></i></option>
-</select>
-<small>Hold Ctrl (Windows) / Cmd (Mac) to select multiple platforms</small>
+
+<div class="group-dropdown" id="platform-dropdown">
+  <!-- Tag chips container -->
+  <div class="tag-container" id="platform-tags"></div>
+
+  <!-- Dropdown button -->
+  <div class="dropdown-btn" id="platform-btn">
+    Select Platforms
+    <i class="fas fa-chevron-down"></i>
+  </div>
+
+  <!-- Dropdown content -->
+  <div class="dropdown-content platform-group" id="platform-options">
+    <label>
+      <input type="checkbox" value="facebook"> 
+      <span class="checkmark"></span> Facebook
+    </label>
+    <label>
+      <input type="checkbox" value="linkedin"> 
+      <span class="checkmark"></span> LinkedIn
+    </label>
+    <label>
+      <input type="checkbox" value="instagram"> 
+      <span class="checkmark"></span> Instagram
+    </label>
+    <label>
+      <input type="checkbox" value="youtube"> 
+      <span class="checkmark"></span> YouTube
+    </label>
+    <label>
+      <input type="checkbox" value="tiktok"> 
+      <span class="checkmark"></span> TikTok
+    </label>
+  </div>
+</div>
+
+<small>Click dropdown to select multiple platforms</small>
+
 
 
      <!-- Groups -->
