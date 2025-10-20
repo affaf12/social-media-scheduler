@@ -1,4 +1,4 @@
-/* ========================= 1. TAG DROPDOWN FUNCTION ========================= */
+/* ========================= 1. TAG DROPDOWN FUNCTION (Enhanced UX) ========================= */
 function initTagDropdown(dropdownId, btnId, contentId, tagContainerId) {
   const dropdown = document.getElementById(dropdownId);
   const btn = document.getElementById(btnId);
@@ -7,73 +7,93 @@ function initTagDropdown(dropdownId, btnId, contentId, tagContainerId) {
 
   const checkboxes = content.querySelectorAll('input[type="checkbox"]');
 
-  // Toggle dropdown
-  btn.addEventListener('click', (e) => {
+  // Smooth dropdown animation
+  const toggleDropdown = (show) => {
+    if (show) {
+      content.style.display = "block";
+      content.style.opacity = 0;
+      content.style.transform = "translateY(-10px)";
+      requestAnimationFrame(() => {
+        content.style.transition = "opacity 0.25s ease, transform 0.25s ease";
+        content.style.opacity = 1;
+        content.style.transform = "translateY(0)";
+      });
+    } else {
+      content.style.transition = "opacity 0.25s ease, transform 0.25s ease";
+      content.style.opacity = 0;
+      content.style.transform = "translateY(-10px)";
+      setTimeout(() => (content.style.display = "none"), 200);
+    }
+  };
+
+  // Toggle dropdown visibility
+  btn.addEventListener("click", (e) => {
     e.stopPropagation();
-    dropdown.classList.toggle('show');
-    content.style.display = dropdown.classList.contains('show') ? 'block' : 'none';
+    const show = !dropdown.classList.contains("show");
+    document.querySelectorAll(".group-dropdown.show").forEach((open) => {
+      open.classList.remove("show");
+      toggleDropdown(false);
+    });
+    dropdown.classList.toggle("show", show);
+    toggleDropdown(show);
   });
 
-  // Close dropdown if clicked outside
-  document.addEventListener('click', (e) => {
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
     if (!dropdown.contains(e.target)) {
-      dropdown.classList.remove('show');
-      content.style.display = 'none';
+      dropdown.classList.remove("show");
+      toggleDropdown(false);
     }
   });
 
   // Handle checkbox selection
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', updateTags);
-  });
+  checkboxes.forEach((checkbox) => checkbox.addEventListener("change", updateTags));
 
-  // Update tags function
+  // Create & display tag chips
   function updateTags() {
-    tagContainer.innerHTML = '';
+    tagContainer.innerHTML = "";
     const selected = [];
+
     checkboxes.forEach((checkbox) => {
       if (checkbox.checked) {
         selected.push(checkbox.value);
-        const chip = document.createElement('span');
-        chip.classList.add('tag-chip');
-        chip.textContent = checkbox.value.charAt(0).toUpperCase() + checkbox.value.slice(1);
-
-        // Remove icon
-        const remove = document.createElement('i');
-        remove.textContent = '×';
-        remove.addEventListener('click', () => {
+        const chip = document.createElement("span");
+        chip.classList.add("tag-chip");
+        chip.innerHTML = `
+          ${checkbox.value.charAt(0).toUpperCase() + checkbox.value.slice(1)}
+          <i title="Remove">×</i>
+        `;
+        chip.querySelector("i").addEventListener("click", () => {
           checkbox.checked = false;
-          updateTags();
+          chip.classList.add("fade-out");
+          setTimeout(updateTags, 150);
         });
-        chip.appendChild(remove);
         tagContainer.appendChild(chip);
       }
     });
 
-    // Update button text
-    btn.textContent = selected.length ? selected.join(', ') : btn.getAttribute('data-default');
-    const icon = document.createElement('i');
-    icon.classList.add('fas', 'fa-chevron-down');
-    btn.appendChild(icon);
+    // Update button label with selected values
+    btn.innerHTML = selected.length
+      ? `${selected.join(", ")} <i class="fas fa-chevron-down"></i>`
+      : `${btn.getAttribute("data-default")} <i class="fas fa-chevron-down"></i>`;
   }
 
-  // Initialize with default text
-  btn.setAttribute('data-default', btn.textContent);
+  // Save default label
+  btn.setAttribute("data-default", btn.textContent.trim());
 }
 
 /* ========================= 2. INITIALIZE DROPDOWNS ========================= */
-document.addEventListener('DOMContentLoaded', () => {
-  // Platforms dropdown
-  initTagDropdown('platform-dropdown', 'platform-btn', 'platform-options', 'platform-tags');
+document.addEventListener("DOMContentLoaded", () => {
+  // Platform dropdown
+  initTagDropdown("platform-dropdown", "platform-btn", "platform-options", "platform-tags");
 
-  // Groups dropdown(s)
-  const groupDropdowns = document.querySelectorAll('.group-dropdown:not(#platform-dropdown)');
+  // Group dropdowns (dynamic)
+  const groupDropdowns = document.querySelectorAll(".group-dropdown:not(#platform-dropdown)");
   groupDropdowns.forEach((drop, index) => {
-    const tagContainer = drop.querySelector('.tag-container');
-    const btn = drop.querySelector('.dropdown-btn');
-    const content = drop.querySelector('.dropdown-content');
+    const tagContainer = drop.querySelector(".tag-container");
+    const btn = drop.querySelector(".dropdown-btn");
+    const content = drop.querySelector(".dropdown-content");
 
-    // Assign unique IDs
     const dropdownId = `group-dropdown-${index}`;
     const btnId = `group-btn-${index}`;
     const contentId = `group-options-${index}`;
@@ -89,56 +109,62 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ========================= 3. LIVE MEDIA PREVIEW ========================= */
-const imageInput = document.getElementById('image');
-const videoInput = document.getElementById('video');
-const previewImage = document.getElementById('preview-image');
-const previewVideo = document.getElementById('preview-video');
+const imageInput = document.getElementById("image");
+const videoInput = document.getElementById("video");
+const previewImage = document.getElementById("preview-image");
+const previewVideo = document.getElementById("preview-video");
 
-imageInput.addEventListener('change', (e) => {
-  const file = e.target.files[0];
+const handleMediaPreview = (input, previewEl, type) => {
+  const file = input.files[0];
   if (file) {
-    previewImage.src = URL.createObjectURL(file);
-    previewImage.style.display = 'block';
+    const url = URL.createObjectURL(file);
+    previewEl.src = url;
+    previewEl.style.display = "block";
+    if (type === "video") previewEl.controls = true;
   } else {
-    previewImage.style.display = 'none';
+    previewEl.style.display = "none";
+    previewEl.src = "";
   }
-});
+};
 
-videoInput.addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if (file) {
-    previewVideo.src = URL.createObjectURL(file);
-    previewVideo.style.display = 'block';
-  } else {
-    previewVideo.style.display = 'none';
-  }
-});
+imageInput.addEventListener("change", (e) => handleMediaPreview(e.target, previewImage, "image"));
+videoInput.addEventListener("change", (e) => handleMediaPreview(e.target, previewVideo, "video"));
 
 /* ========================= 4. FORM SUBMISSION & DASHBOARD UPDATE ========================= */
 const form = document.getElementById("postForm");
-const dashboardBody = document.querySelector('#dashboard tbody');
+const dashboardBody = document.querySelector("#dashboard tbody");
+const statusEl = document.getElementById("status");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Get selected platforms
-  const platformCheckboxes = document.querySelectorAll('#platform-options input[type="checkbox"]');
-  const selectedPlatforms = Array.from(platformCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+  const selectedPlatforms = Array.from(
+    document.querySelectorAll("#platform-options input[type='checkbox']:checked")
+  ).map((cb) => cb.value);
 
-  // Get selected groups
-  const groupCheckboxes = document.querySelectorAll('.group-dropdown .dropdown-content input[type="checkbox"]');
-  const selectedGroups = Array.from(groupCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+  const selectedGroups = Array.from(
+    document.querySelectorAll(".group-dropdown .dropdown-content input[type='checkbox']:checked")
+  ).map((cb) => cb.value);
 
   const post = {
-    text: document.getElementById("text").value,
+    text: document.getElementById("text").value.trim(),
     platform: selectedPlatforms,
     groups: selectedGroups,
-    tags: document.getElementById("tags").value,
+    tags: document.getElementById("tags").value.trim(),
     priority: document.getElementById("priority").value,
     time: document.getElementById("time").value,
   };
 
+  if (!post.text) {
+    statusEl.innerText = "⚠️ Please enter some text before submitting.";
+    statusEl.style.color = "red";
+    return;
+  }
+
   try {
+    statusEl.innerText = "⏳ Posting...";
+    statusEl.style.color = "#2563eb";
+
     const res = await fetch("https://social-media-scheduler-seven.vercel.app/add-post", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -146,27 +172,45 @@ form.addEventListener("submit", async (e) => {
     });
 
     const data = await res.json();
-    document.getElementById("status").innerText = data.message;
+    statusEl.innerText = "✅ Post scheduled successfully!";
+    statusEl.style.color = "green";
 
-    // ========================= UPDATE DASHBOARD =========================
-    const newRow = document.createElement('tr');
-
+    // Create new row in dashboard
+    const newRow = document.createElement("tr");
     newRow.innerHTML = `
       <td>${post.text}</td>
-      <td>${post.platform.join(', ')}</td>
-      <td>${post.groups.join(', ')}</td>
-      <td>${post.time}</td>
-      <td>${post.priority}</td>
+      <td>${post.platform.join(", ") || "-"}</td>
+      <td>${post.groups.join(", ") || "-"}</td>
+      <td>${post.time || "-"}</td>
+      <td>${post.priority || "Medium"}</td>
     `;
 
-    // Remove placeholder row if exists
-    const emptyRow = dashboardBody.querySelector('tr td[colspan="5"]');
-    if (emptyRow) dashboardBody.innerHTML = '';
+    // Remove placeholder row if any
+    const placeholder = dashboardBody.querySelector('tr td[colspan="5"]');
+    if (placeholder) dashboardBody.innerHTML = "";
 
     dashboardBody.appendChild(newRow);
 
+    // Reset form
+    form.reset();
+    document.querySelectorAll(".tag-container").forEach((c) => (c.innerHTML = ""));
+    previewImage.style.display = "none";
+    previewVideo.style.display = "none";
   } catch (err) {
-    console.error(err);
-    document.getElementById("status").innerText = "Error sending post. Try again!";
+    console.error("Error:", err);
+    statusEl.innerText = "❌ Error sending post. Please try again later.";
+    statusEl.style.color = "red";
   }
 });
+
+/* ========================= 5. SMALL UI TOUCHES ========================= */
+// Fade-out animation for tag removal
+const style = document.createElement("style");
+style.innerHTML = `
+  .fade-out {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.2s ease-out;
+  }
+`;
+document.head.appendChild(style);
