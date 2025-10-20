@@ -15,112 +15,117 @@
   <p>Schedule posts on multiple platforms & groups with live preview!</p>
 </header>
 
-<!-- ===== FORM SECTION ===== -->
-<section id="form-section">
-  <h2>📝 Create & Schedule a Post</h2>
-  <form id="postForm">
+<!-- ===== MAIN SECTION ===== -->
+<main id="main-section">
 
-    <!-- Post Text -->
-    <label for="text">Post Text:</label>
-    <textarea placeholder="Write your post..." id="text" required></textarea>
+  <!-- ===== LEFT PANEL ===== -->
+  <aside class="left-panel">
+    <h2>📝 Create & Schedule a Post</h2>
+    <form id="postForm">
 
-    <!-- Platforms -->
-    <label>Select Platforms:</label>
-    <div class="platform-icons">
-      <button type="button" class="platform-btn" data-platform="facebook"><i class="fab fa-facebook"></i> Facebook</button>
-      <button type="button" class="platform-btn" data-platform="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</button>
-      <button type="button" class="platform-btn" data-platform="instagram"><i class="fab fa-instagram"></i> Instagram</button>
-      <button type="button" class="platform-btn" data-platform="youtube"><i class="fab fa-youtube"></i> YouTube</button>
-      <button type="button" class="platform-btn" data-platform="tikTok"><i class="fab fa-tiktok"></i> TikTok</button>
+      <!-- Post Text -->
+      <label for="text">Post Text:</label>
+      <textarea id="text" placeholder="Write your post..." required></textarea>
+
+      <!-- Platforms -->
+      <label>Select Platforms:</label>
+      <div class="platform-icons">
+        <button type="button" class="platform-btn" data-platform="facebook"><i class="fab fa-facebook"></i> Facebook</button>
+        <button type="button" class="platform-btn" data-platform="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</button>
+        <button type="button" class="platform-btn" data-platform="instagram"><i class="fab fa-instagram"></i> Instagram</button>
+        <button type="button" class="platform-btn" data-platform="youtube"><i class="fab fa-youtube"></i> YouTube</button>
+        <button type="button" class="platform-btn" data-platform="tikTok"><i class="fab fa-tiktok"></i> TikTok</button>
+      </div>
+
+      <!-- Groups -->
+      <label>Select Groups:</label>
+      <div class="group-icons">
+        <button type="button" class="group-btn" data-group="fb_group1">
+          <i class="fab fa-facebook"></i> FB Group 1 <span class="checkmark">&#10003;</span>
+        </button>
+        <button type="button" class="group-btn" data-group="fb_group2">
+          <i class="fab fa-facebook"></i> FB Group 2 <span class="checkmark">&#10003;</span>
+        </button>
+        <button type="button" class="group-btn" data-group="ln_group1">
+          <i class="fab fa-linkedin"></i> LN Group 1 <span class="checkmark">&#10003;</span>
+        </button>
+        <button type="button" class="group-btn" data-group="ln_group2">
+          <i class="fab fa-linkedin"></i> LN Group 2 <span class="checkmark">&#10003;</span>
+        </button>
+      </div>
+
+      <!-- Tags / Hashtags -->
+      <label for="tags">Tags / Hashtags:</label>
+      <input type="text" id="tags" placeholder="#marketing #launch">
+
+      <!-- Priority -->
+      <label for="priority">Priority:</label>
+      <select id="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+
+      <!-- Media Upload -->
+      <label>Upload Media:</label>
+      <input type="file" id="image" accept="image/*">
+      <input type="file" id="video" accept="video/*">
+
+      <!-- Schedule Time -->
+      <label for="time">Schedule Time:</label>
+      <input type="datetime-local" id="time" required>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">Schedule Post</button>
+      <p id="status"></p>
+    </form>
+  </aside>
+
+  <!-- ===== RIGHT PANEL ===== -->
+  <section class="right-panel">
+
+    <!-- Live Preview -->
+    <div class="panel-section" id="preview-section">
+      <h2>👁️ Live Post Preview</h2>
+      <div id="preview">
+        <h3>Post Text:</h3>
+        <p id="preview-text">Your post text will appear here...</p>
+
+        <h4>Tags / Hashtags:</h4>
+        <span class="tags" id="preview-tags"></span>
+
+        <h4>Priority:</h4>
+        <span class="priority-badge" id="preview-priority"></span>
+
+        <h4>Media Preview:</h4>
+        <img id="preview-image" src="" alt="Image Preview" style="display:none;">
+        <video id="preview-video" controls style="display:none;"></video>
+      </div>
     </div>
 
-<!-- Groups -->
-<label>Select Groups:</label>
-<div class="group-icons">
-  <button type="button" class="group-btn" data-group="fb_group1">
-    <i class="fab fa-facebook"></i> FB Group 1
-    <span class="checkmark">&#10003;</span>
-  </button>
-  <button type="button" class="group-btn" data-group="fb_group2">
-    <i class="fab fa-facebook"></i> FB Group 2
-    <span class="checkmark">&#10003;</span>
-  </button>
-  <button type="button" class="group-btn" data-group="ln_group1">
-    <i class="fab fa-linkedin"></i> LN Group 1
-    <span class="checkmark">&#10003;</span>
-  </button>
-  <button type="button" class="group-btn" data-group="ln_group2">
-    <i class="fab fa-linkedin"></i> LN Group 2
-    <span class="checkmark">&#10003;</span>
-  </button>
-</div>
+    <!-- Dashboard -->
+    <div class="panel-section" id="dashboard-section">
+      <h2>📊 Upcoming Scheduled Posts</h2>
+      <table id="dashboard">
+        <thead>
+          <tr>
+            <th>Text</th>
+            <th>Platforms</th>
+            <th>Groups</th>
+            <th>Time</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" style="text-align:center;">No posts scheduled yet.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <!-- Category -->
-    <label for="category">Category:</label>
-    <select id="category">
-      <option value="marketing">Marketing</option>
-      <option value="announcement">Announcement</option>
-      <option value="event">Event</option>
-      <option value="analytics">Analytics</option>
-    </select>
-
-    <!-- Priority -->
-    <label for="priority">Priority:</label>
-    <select id="priority">
-      <option value="low">Low</option>
-      <option value="medium">Medium</option>
-      <option value="high">High</option>
-    </select>
-
-    <!-- Tags / Hashtags -->
-    <label for="tags">Tags / Hashtags:</label>
-    <input type="text" id="tags" placeholder="#marketing #launch">
-
-    <!-- Media Upload -->
-    <label>Upload Media:</label>
-    <input type="file" id="image" accept="image/*">
-    <input type="file" id="video" accept="video/*">
-
-    <!-- Schedule Time -->
-    <label for="time">Schedule Time:</label>
-    <input type="datetime-local" id="time" required>
-
-    <!-- Submit Button -->
-    <button type="submit" class="submit-btn">Schedule Post</button>
-  </form>
-  <p id="status"></p>
-</section>
-
-<!-- ===== LIVE PREVIEW ===== -->
-<section id="preview-section">
-  <h2>👁️ Live Post Preview</h2>
-  <div id="preview">
-    <p id="preview-text"></p>
-    <span class="tags" id="preview-tags"></span>
-    <span class="priority-badge" id="preview-priority"></span>
-    <img id="preview-image" src="" style="display:none;">
-    <video id="preview-video" controls style="display:none;"></video>
-  </div>
-</section>
-
-<!-- ===== DASHBOARD ===== -->
-<section id="dashboard-section">
-  <h2>📊 Upcoming Scheduled Posts</h2>
-  <table id="dashboard">
-    <thead>
-      <tr>
-        <th>Text</th>
-        <th>Platforms</th>
-        <th>Groups</th>
-        <th>Time</th>
-        <th>Priority</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td colspan="5" style="text-align:center;">No posts scheduled yet.</td></tr>
-    </tbody>
-  </table>
-</section>
+  </section>
+</main>
 
 <script src="app.js"></script>
 </body>
