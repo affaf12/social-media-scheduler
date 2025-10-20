@@ -1,4 +1,4 @@
-/* ================= GENERAL RESET ================= */
+/* ========================= GENERAL RESET ========================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,7 +12,7 @@ body {
   line-height: 1.6;
 }
 
-/* ================= HEADER ================= */
+/* ========================= HEADER ========================= */
 header {
   background: linear-gradient(90deg, #4a90e2, #357ab8);
   color: #fff;
@@ -32,7 +32,7 @@ header p {
   color: #e0e7ff;
 }
 
-/* ================= MAIN LAYOUT ================= */
+/* ========================= MAIN LAYOUT ========================= */
 #main-section {
   display: flex;
   gap: 20px;
@@ -59,7 +59,7 @@ header p {
   gap: 20px;
 }
 
-/* ================= FORM ELEMENTS ================= */
+/* ========================= FORM ELEMENTS ========================= */
 form label {
   display: block;
   margin-top: 15px;
@@ -97,12 +97,12 @@ textarea {
   resize: vertical;
 }
 
-/* ================= MULTISELECT ================= */
+/* ========================= MULTISELECT ========================= */
 select[multiple] {
   height: 120px;
 }
 
-/* ================= DROPDOWN CHECKBOX ================= */
+/* ========================= MODERN DROPDOWN CHECKBOX ========================= */
 .group-dropdown {
   position: relative;
   margin-top: 5px;
@@ -141,7 +141,30 @@ select[multiple] {
   z-index: 100;
 }
 
-/* ================= MODERN DROPDOWN CHECKBOX BUTTONS ================= */
+/* ========================= DROPDOWN ICON TOGGLE ========================= */
+.dropdown-btn i {
+  transition: transform 0.3s ease;
+}
+
+.group-dropdown.show .dropdown-btn i {
+  transform: rotate(180deg);
+}
+
+/* ========================= DROPDOWN SCROLLBAR ========================= */
+.dropdown-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background: #4a90e2;
+  border-radius: 10px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background: #f0f4f8;
+}
+
+/* ========================= DROPDOWN CHECKBOX BUTTONS ========================= */
 .platform-group strong {
   display: block;
   margin-bottom: 8px;
@@ -192,30 +215,34 @@ select[multiple] {
   font-weight: bold;
 }
 
-/* ================= DROPDOWN TOGGLE ICON ================= */
-.dropdown-btn i {
-  transition: transform 0.3s ease;
+/* ========================= TAG CHIPS ========================= */
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
-.group-dropdown.show .dropdown-btn i {
-  transform: rotate(180deg);
-}
-
-/* ================= SCROLLBAR ================= */
-.dropdown-content::-webkit-scrollbar {
-  width: 6px;
-}
-
-.dropdown-content::-webkit-scrollbar-thumb {
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
   background: #4a90e2;
-  border-radius: 10px;
+  color: #fff;
+  font-size: 0.85rem;
+  border-radius: 16px;
+  font-weight: 500;
 }
 
-.dropdown-content::-webkit-scrollbar-track {
-  background: #f0f4f8;
+.tag-chip i {
+  cursor: pointer;
+  font-style: normal;
+  font-weight: bold;
+  margin-left: 4px;
 }
 
-/* ================= BUTTON ================= */
+/* ========================= SUBMIT BUTTON ========================= */
 .submit-btn {
   background: linear-gradient(90deg, #4a90e2, #357ab8);
   color: #fff;
@@ -234,7 +261,7 @@ select[multiple] {
   background: linear-gradient(90deg, #357ab8, #285a91);
 }
 
-/* ================= RIGHT PANEL ================= */
+/* ========================= RIGHT PANEL ========================= */
 .right-panel label {
   margin-top: 0;
 }
@@ -248,7 +275,7 @@ select[multiple] {
   resize: vertical;
 }
 
-/* ================= PANEL SECTIONS ================= */
+/* ========================= PANEL SECTIONS ========================= */
 .panel-section {
   background: #f9f9f9;
   border-radius: 12px;
@@ -261,7 +288,7 @@ select[multiple] {
   color: #4a4a4a;
 }
 
-/* ================= MEDIA PREVIEW ================= */
+/* ========================= MEDIA PREVIEW ========================= */
 #preview img,
 #preview video {
   max-width: 100%;
@@ -269,7 +296,7 @@ select[multiple] {
   margin-top: 10px;
 }
 
-/* ================= DASHBOARD ================= */
+/* ========================= DASHBOARD ========================= */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -296,7 +323,7 @@ table tbody tr:hover {
   background: #e8f0fe;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ========================= RESPONSIVE ========================= */
 @media (max-width: 992px) {
   #main-section {
     flex-direction: column;
