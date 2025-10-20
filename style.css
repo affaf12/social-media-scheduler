@@ -334,6 +334,7 @@ input[type="file"] {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+/* ===== Grid layout for inputs ===== */
 .api-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -341,6 +342,7 @@ input[type="file"] {
   margin-bottom: 20px;
 }
 
+/* ===== Individual input field ===== */
 .api-field {
   display: flex;
   flex-direction: column;
@@ -363,6 +365,7 @@ input[type="file"] {
   border-color: #4a90e2;
 }
 
+/* ===== Connection status text ===== */
 .api-status {
   font-size: 0.9em;
   margin-top: 4px;
@@ -376,12 +379,28 @@ input[type="file"] {
   color: red;
 }
 
+/* ===== Buttons (Save, Clear) ===== */
 .api-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
 
+.api-buttons button {
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.api-buttons button:hover {
+  background-color: #357abd;
+}
+
+/* ===== Danger button (Clear All) ===== */
 .danger-btn {
   background-color: #e63946;
   color: #fff;
@@ -389,8 +408,17 @@ input[type="file"] {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .danger-btn:hover {
   background-color: #d62828;
+}
+
+/* ===== HIDE the API setup section from everyone ===== */
+#api-setup {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
