@@ -35,22 +35,25 @@
 <small>Hold Ctrl (Windows) / Cmd (Mac) to select multiple platforms</small>
 
 
-      <!-- Groups -->
-      <label>Select Groups:</label>
-      <div class="group-icons">
-        <button type="button" class="group-btn" data-group="fb_group1">
-          <i class="fab fa-facebook"></i> FB Group 1 <span class="checkmark">&#10003;</span>
-        </button>
-        <button type="button" class="group-btn" data-group="fb_group2">
-          <i class="fab fa-facebook"></i> FB Group 2 <span class="checkmark">&#10003;</span>
-        </button>
-        <button type="button" class="group-btn" data-group="ln_group1">
-          <i class="fab fa-linkedin"></i> LN Group 1 <span class="checkmark">&#10003;</span>
-        </button>
-        <button type="button" class="group-btn" data-group="ln_group2">
-          <i class="fab fa-linkedin"></i> LN Group 2 <span class="checkmark">&#10003;</span>
-        </button>
-      </div>
+     <!-- Groups -->
+<label for="groups">Select Groups:</label>
+<div class="group-dropdown">
+  <button type="button" class="dropdown-btn">Choose Groups <i class="fa fa-caret-down"></i></button>
+  <div class="dropdown-content">
+    <!-- Facebook Groups -->
+    <div class="platform-group">
+      <strong>Facebook</strong>
+      <label><input type="checkbox" name="groups" value="fb_group1"> FB Group 1</label>
+      <label><input type="checkbox" name="groups" value="fb_group2"> FB Group 2</label>
+    </div>
+    <!-- LinkedIn Groups -->
+    <div class="platform-group">
+      <strong>LinkedIn</strong>
+      <label><input type="checkbox" name="groups" value="ln_group1"> LN Group 1</label>
+      <label><input type="checkbox" name="groups" value="ln_group2"> LN Group 2</label>
+    </div>
+  </div>
+</div>
 
       <!-- Tags / Hashtags -->
       <label for="tags">Tags / Hashtags:</label>
