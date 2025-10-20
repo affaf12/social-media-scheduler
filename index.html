@@ -23,15 +23,17 @@
     <h2>📝 Create & Schedule a Post</h2>
     <form id="postForm">
 
-      <!-- Platforms -->
-      <label>Select Platforms:</label>
-      <div class="platform-icons">
-        <button type="button" class="platform-btn" data-platform="facebook"><i class="fab fa-facebook"></i> Facebook</button>
-        <button type="button" class="platform-btn" data-platform="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</button>
-        <button type="button" class="platform-btn" data-platform="instagram"><i class="fab fa-instagram"></i> Instagram</button>
-        <button type="button" class="platform-btn" data-platform="youtube"><i class="fab fa-youtube"></i> YouTube</button>
-        <button type="button" class="platform-btn" data-platform="tikTok"><i class="fab fa-tiktok"></i> TikTok</button>
-      </div>
+<!-- Platforms -->
+<label for="platforms">Select Platforms:</label>
+<select id="platforms" multiple>
+  <option value="facebook">Facebook <i class="fab fa-facebook"></i></option>
+  <option value="linkedin">LinkedIn <i class="fab fa-linkedin"></i></option>
+  <option value="instagram">Instagram <i class="fab fa-instagram"></i></option>
+  <option value="youtube">YouTube <i class="fab fa-youtube"></i></option>
+  <option value="tikTok">TikTok <i class="fab fa-tiktok"></i></option>
+</select>
+<small>Hold Ctrl (Windows) / Cmd (Mac) to select multiple platforms</small>
+
 
       <!-- Groups -->
       <label>Select Groups:</label>
