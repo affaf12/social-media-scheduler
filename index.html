@@ -157,6 +157,48 @@
   </section>
 </main>
 
+
+
+  <!-- ========================= API INTEGRATION SECTION ========================= -->
+<div class="panel-section" id="api-section">
+  <h2>🔐 API Integration Setup</h2>
+  <p>Store your API keys or access tokens for each platform. (Saved locally in your browser)</p>
+
+  <form id="apiForm">
+    <div class="api-grid">
+      <div class="api-field">
+        <label for="facebook-api">Facebook Token:</label>
+        <input type="text" id="facebook-api" placeholder="Paste your Facebook Access Token">
+        <span class="api-status" id="facebook-status">❌ Not Connected</span>
+      </div>
+
+      <div class="api-field">
+        <label for="linkedin-api">LinkedIn Token:</label>
+        <input type="text" id="linkedin-api" placeholder="Paste your LinkedIn Access Token">
+        <span class="api-status" id="linkedin-status">❌ Not Connected</span>
+      </div>
+
+      <div class="api-field">
+        <label for="instagram-api">Instagram Token:</label>
+        <input type="text" id="instagram-api" placeholder="Paste your Instagram Access Token">
+        <span class="api-status" id="instagram-status">❌ Not Connected</span>
+      </div>
+
+      <div class="api-field">
+        <label for="twitter-api">Twitter Token:</label>
+        <input type="text" id="twitter-api" placeholder="Paste your Twitter Bearer Token">
+        <span class="api-status" id="twitter-status">❌ Not Connected</span>
+      </div>
+    </div>
+
+    <div class="api-buttons">
+      <button type="submit" class="submit-btn">💾 Save API Tokens</button>
+      <button type="button" id="clear-api" class="danger-btn">🧹 Clear All</button>
+    </div>
+  </form>
+</div>
+
+
 <!-- ========================= SCRIPT ========================= -->
 <script src="app.js"></script>
 
